@@ -13,11 +13,12 @@ public class Sling_shot_mechanic : MonoBehaviour
     private LineRenderer line_Renderer;
 
     public bool is_Sling_able = false;
-    private Vector2 shot_angle;
+    private Vector3 startpos; // Vector3 to store the start position
     private float touch_dis;
 
     void Start()
     {
+        RB.useGravity = false;
     }
 
     void FixedUpdate()
@@ -27,37 +28,46 @@ public class Sling_shot_mechanic : MonoBehaviour
 
     void Sling()
     {
-        if (Input.touchCount != 0)
+        if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
-            Vector3 startpos = Vector3.zero;
             Vector3 endpos; 
-            
+
             var ray = Camera.main.ScreenPointToRay(touch.position);
             RaycastHit hit;
 
             if (touch.phase == TouchPhase.Began)
             {
-                if (Physics.Raycast(ray,out hit, 100, player_Layer))
+                if (Physics.Raycast(ray, out hit, 100, player_Layer))
                 {
-                    startpos = ray.GetPoint(0);
+                    RB.gameObject.transform.SetParent(null);
+                    RB.transform.rotation = Quaternion.identity;
+                    RB.isKinematic = true;
+                    startpos = hit.point; // Set start position to the hit point
                     is_Sling_able = true;
                 }
             }
             if (touch.phase == TouchPhase.Moved && is_Sling_able)
             {
-                endpos = ray.GetPoint(0);
-                touch_dis = Vector3.Distance((Vector2)startpos, (Vector2)endpos * 10);
-                shot_angle = (Vector2)startpos - (Vector2)endpos;
+                endpos = ray.GetPoint(10); // Adjust the depth of the ray intersection
+                touch_dis = Vector3.Distance(startpos, endpos);
+                Vector3 shot_angle = startpos - endpos;
 
-                line_Renderer.SetPosition(1, shot_angle * touch_dis * shot_Power);
+                //line_Renderer.SetPosition(0, startpos); // Start point of the line
+                line_Renderer.SetPosition(1, shot_angle * touch_dis * shot_Power * 0.1f); // End point of the line
             }
-            if (touch.phase == TouchPhase.Ended)
-            {                
-                RB.AddForce(shot_angle * touch_dis * shot_Power, ForceMode.Impulse);
-                
+            if (touch.phase == TouchPhase.Ended && is_Sling_able)
+            {
+                endpos = ray.GetPoint(10); // Adjust the depth of the ray intersection
+                touch_dis = Vector3.Distance(startpos, endpos);
+                Vector3 shot_angle = startpos - endpos;
+
+                RB.isKinematic = false;
+                RB.velocity = Vector3.zero;
+                RB.AddForce(shot_angle * touch_dis * shot_Power * 0.1f, ForceMode.Impulse);
+
                 is_Sling_able = false;
-                line_Renderer.SetPosition(1, Vector3.zero);
+                line_Renderer.SetPosition(1, Vector3.zero); // Reset the line renderer
             }
         }
     }
