@@ -3,6 +3,7 @@ using UnityEngine;
 public class Attach_to_planet : MonoBehaviour
 {
     private Transform current_Attached_planet;
+    public float loc_adject_speed = 0.01f;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -10,7 +11,6 @@ public class Attach_to_planet : MonoBehaviour
         {
             current_Attached_planet = collision.gameObject.GetComponent<Transform>();
             transform.SetParent(current_Attached_planet, true);
-            transform.rotation = Quaternion.identity;
         }
     }
 }
