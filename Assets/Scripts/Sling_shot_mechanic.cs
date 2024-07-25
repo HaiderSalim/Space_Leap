@@ -13,18 +13,26 @@ public class Sling_shot_mechanic : MonoBehaviour
     private LineRenderer line_Renderer_F;
     [SerializeField]
     private LineRenderer line_Renderer_B;
+    [SerializeField]
+    private Game_Controller_Data G_control_d;
 
     public bool is_Sling_able = false;
     private Vector3 startpos; // Vector3 to store the start position
     private float touch_dis;
+    private Attach_to_planet attach_To_Planet;
 
     void Start()
     {
         RB.useGravity = false;
+        attach_To_Planet = RB.gameObject.GetComponent<Attach_to_planet>();
     }
 
     void Update()
     {
+        if (!attach_To_Planet.unattachable)
+        {
+            is_Sling_able = false;
+        }
     }
 
     void FixedUpdate()
@@ -73,6 +81,7 @@ public class Sling_shot_mechanic : MonoBehaviour
                 RB.gameObject.GetComponent<Outline>().enabled = false;
                 RB.isKinematic = false;
                 RB.velocity = Vector3.zero;
+                attach_To_Planet.unattachable = false;
                 RB.AddForce(shot_angle * touch_dis * shot_Power * 0.1f, ForceMode.Impulse);
 
                 is_Sling_able = false;
