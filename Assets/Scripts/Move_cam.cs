@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Move_cam : MonoBehaviour
 {
+    [SerializeField]
+    private bool is_Win_trigger = false;
     private Game_controller GC;
 
     void Start()
@@ -13,8 +15,15 @@ public class Move_cam : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            GC.ManageCheckPoints();
-            gameObject.SetActive(false);
+            if (is_Win_trigger)
+            {
+                GC.GameWin();
+            }
+            else
+            {
+                GC.ManageCheckPoints();
+                gameObject.SetActive(false);
+            }
         }
     }
 }

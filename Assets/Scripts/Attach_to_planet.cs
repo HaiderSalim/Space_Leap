@@ -4,7 +4,8 @@ public class Attach_to_planet : MonoBehaviour
 {
     public float loc_adject_speed = 0.01f;
     public float unattachable_Delay = 0.1f;
-    public bool unattachable = true;
+    public bool unattachable = true;//indecates if the player can attach to a planet.
+    public bool is_Attached = false;//indecates if the player is attached to a planet.
     private Transform current_Attached_planet;
     private float unattachable_Delay_temp;
 
@@ -36,6 +37,7 @@ public class Attach_to_planet : MonoBehaviour
             current_Attached_planet = collision.gameObject.GetComponent<Transform>();
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             transform.SetParent(current_Attached_planet, true);
+            is_Attached = true;
         }
     }
 }

@@ -42,7 +42,7 @@ public class Sling_shot_mechanic : MonoBehaviour
 
     void Sling()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && attach_To_Planet.is_Attached && !G_control_d.is_Game_ended)
         {
             var touch = Input.GetTouch(0);
             Vector3 endpos;
@@ -87,6 +87,7 @@ public class Sling_shot_mechanic : MonoBehaviour
                 is_Sling_able = false;
                 line_Renderer_F.SetPosition(1, Vector3.zero); // Reset the line renderer
                 line_Renderer_B.SetPosition(1, Vector3.zero);
+                attach_To_Planet.is_Attached = false;
             }
         }
     }

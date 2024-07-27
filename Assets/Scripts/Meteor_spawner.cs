@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+[RequireComponent(typeof(Meteor_movement))]
 public class Meteor_spawner : MonoBehaviour
 {
     [SerializeField]
@@ -43,7 +45,12 @@ public class Meteor_spawner : MonoBehaviour
 
         if (!is_inscreen)
         {
-            transform.position = Spawn_point;
+            Back_to_spawn();
         }
+    }
+
+    public void Back_to_spawn()
+    {
+        transform.position = Spawn_point;
     }
 }
