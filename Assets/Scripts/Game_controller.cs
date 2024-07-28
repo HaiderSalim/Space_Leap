@@ -14,20 +14,38 @@ public class Game_controller : MonoBehaviour
     private GameObject Game_lose_screen;
     [SerializeField]
     private Image Fuel_bar_fill;
+    [SerializeField]
+    private Transform Sun;
 
     public List<GameObject> Health_Bar;
     private List<Level_CheckPoint> CPs;
     private Attach_to_planet attach_To_Planet;
+    private float fuel_slow_delay = 0f;
+    private float fuel_Regen_og_amount;
+    private bool fuel_is_Slowed = false;
 
     void Start()
     {
         CPs = G_cont_data.CheckPoints;//caching
         attach_To_Planet = GameObject.FindGameObjectWithTag("Player").GetComponent<Attach_to_planet>();
+        fuel_Regen_og_amount = G_cont_data.fuel_Regen_Speed;
     }
 
     void Update()
     {
-        decrease_Fuel();
+        manage_Fuel();
+        move_Sun();
+
+        if (fuel_slow_delay <= 0 && fuel_is_Slowed)
+        {
+            G_cont_data.fuel_Regen_Speed = fuel_Regen_og_amount;
+            fuel_slow_delay = 0;
+            fuel_is_Slowed = false;
+        }
+        else if (fuel_is_Slowed)
+        {
+            fuel_slow_delay -= Time.deltaTime;
+        }
     }
 
     public void ManageCheckPoints()
@@ -40,7 +58,12 @@ public class Game_controller : MonoBehaviour
         }
     }
 
-    public void decrease_Fuel()
+    private void move_Sun()
+    {
+        Sun.Translate(new Vector3(0, G_cont_data.Sun_mov_speed * Time.deltaTime, 0), Space.Self);
+    }
+
+    public void manage_Fuel()
     {
         if (!attach_To_Planet.is_Attached && !G_cont_data.is_Game_ended)
             Fuel_bar_fill.fillAmount -= G_cont_data.fuel_Useage_Speed * Time.deltaTime;
@@ -49,6 +72,15 @@ public class Game_controller : MonoBehaviour
 
         if (Fuel_bar_fill.fillAmount <= 0)
             Die();
+    }
+
+    public void slow_fuel_regen(float amount, float time)
+    {
+        fuel_slow_delay = time;
+        var newspeed = G_cont_data.fuel_Regen_Speed - amount;
+        
+        G_cont_data.fuel_Regen_Speed = newspeed;
+        fuel_is_Slowed = true;
     }
 
     public void decrease_Health()

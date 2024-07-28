@@ -69,8 +69,16 @@ public class Sling_shot_mechanic : MonoBehaviour
                 Vector3 shot_angle = startpos - endpos;
                 shot_angle.z = 0;
 
-                line_Renderer_F.SetPosition(1, 0.1f * Mathf.Clamp(touch_dis, 0, 2f) * shot_Power * shot_angle); // End point of the line
-                line_Renderer_B.SetPosition(1, 0.1f * Mathf.Clamp(touch_dis, 0, 2f) * shot_Power * -shot_angle);
+                var Total_force_F =  0.1f * touch_dis * shot_Power * shot_angle;
+                Total_force_F.y = Mathf.Clamp(Total_force_F.y, 0, 2.5f);
+                Total_force_F.x = Mathf.Clamp(Total_force_F.x, -2.8f, 2.8f);
+                var Total_force_B =  0.1f * touch_dis * shot_Power * -shot_angle;
+                Total_force_B.y = Mathf.Clamp(Total_force_B.y, -2.5f, 0f);
+                Total_force_B.x = Mathf.Clamp(Total_force_B.x, -2.8f, 2.8f);
+                //Debug.Log(Total_force_F + " " + Total_force_B);
+
+                line_Renderer_F.SetPosition(1, Total_force_F); // End point of the line
+                line_Renderer_B.SetPosition(1, Total_force_B);
             }
             if (touch.phase == TouchPhase.Ended && is_Sling_able)
             {
@@ -82,7 +90,13 @@ public class Sling_shot_mechanic : MonoBehaviour
                 RB.isKinematic = false;
                 RB.velocity = Vector3.zero;
                 attach_To_Planet.unattachable = false;
-                RB.AddForce(shot_angle * touch_dis * shot_Power * 0.1f, ForceMode.Impulse);
+
+                var Total_force = 0.1f * shot_Power * touch_dis * shot_angle;
+                Total_force.y = Mathf.Clamp(Total_force.y, 0, 2.5f);//locking the force to a limit and also so preventing the player to sling back (There is only one way to go UP!!)
+                Total_force.x = Mathf.Clamp(Total_force.x, -2.8f, 2.8f);
+
+                if (Total_force.y > 0)//makes sure that force only applyes when their is an effect to sling so, accindental swips don't registor.
+                    RB.AddForce(Total_force, ForceMode.Impulse);
 
                 is_Sling_able = false;
                 line_Renderer_F.SetPosition(1, Vector3.zero); // Reset the line renderer

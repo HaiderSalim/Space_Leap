@@ -9,13 +9,9 @@ public class Attach_to_planet : MonoBehaviour
     private Transform current_Attached_planet;
     private float unattachable_Delay_temp;
 
-    [SerializeField]
-    private Game_Controller_Data G_control_d;
-
     void Start()
     {
         unattachable_Delay_temp = unattachable_Delay;
-        G_control_d = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_Controller_Data>();
     }
     void Update()
     {
@@ -27,6 +23,16 @@ public class Attach_to_planet : MonoBehaviour
         {
             unattachable = true;
             unattachable_Delay = unattachable_Delay_temp;
+        }
+
+        if (transform.parent != null)
+        {
+            transform.rotation = Quaternion.identity;
+            transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 
