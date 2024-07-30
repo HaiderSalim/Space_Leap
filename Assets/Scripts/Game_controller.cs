@@ -16,6 +16,8 @@ public class Game_controller : MonoBehaviour
     private Image Fuel_bar_fill;
     [SerializeField]
     private Transform Sun;
+    [SerializeField]
+    private GameObject Player_rocket_tril; 
 
     public List<GameObject> Health_Bar;
     private List<Level_CheckPoint> CPs;
@@ -71,7 +73,10 @@ public class Game_controller : MonoBehaviour
             Fuel_bar_fill.fillAmount += G_cont_data.fuel_Regen_Speed * Time.deltaTime;
 
         if (Fuel_bar_fill.fillAmount <= 0)
+        {
+            Player_rocket_tril.SetActive(false);
             Die();
+        }
     }
 
     public void slow_fuel_regen(float amount, float time)

@@ -17,10 +17,14 @@ public class Black_hole : MonoBehaviour
     private float Pull_force = 0f;
     private Vector3 Pull_direction;
     private Game_controller GC;
+    private AudioSource Black_h_audio;
+
+    private bool once = false;
 
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_controller>();
+        Black_h_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(5);
         Radius_ring = transform.GetChild(0);
         Radius_ring.localScale = new Vector3(radius + 0.15f, radius + 0.15f, 1);
     }
@@ -28,6 +32,11 @@ public class Black_hole : MonoBehaviour
     void FixedUpdate()
     {
         var colliders = Physics.OverlapSphere(transform.position, radius, player_mask);
+        if (colliders.Length > 0 && !once)
+        {
+            Black_h_audio.Play();
+            once = true;
+        }
         foreach (var collider in colliders)
         {
             var RB = collider.gameObject.GetComponent<Rigidbody>();
@@ -37,6 +46,11 @@ public class Black_hole : MonoBehaviour
             Pull_force = Gravitation_const * (Player_mass * Blackhole_mass / radius*radius);
 
             RB.AddForce(-Pull_force * Pull_direction, ForceMode.Force);
+        }
+        if (colliders.Length <= 0 && once)
+        {
+            Black_h_audio.Stop();
+            once = false;
         }
     }
 

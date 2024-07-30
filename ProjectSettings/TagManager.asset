@@ -7,6 +7,7 @@ TagManager:
   - Planet
   - obstacles
   - Sun
+  - Audio
   layers:
   - Default
   - TransparentFX

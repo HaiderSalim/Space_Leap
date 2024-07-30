@@ -18,6 +18,7 @@ public class Game_Controller_Data : MonoBehaviour
     public float fuel_Regen_Speed = 0.5f;
     [Range(0.1f, 1f)]
     public float Sun_mov_speed;
+    public bool is_slowmo_on = false;
 
     void Start()
     {
