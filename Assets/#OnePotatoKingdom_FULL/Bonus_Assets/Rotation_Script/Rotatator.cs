@@ -2,7 +2,7 @@
 
 public class Rotatator : MonoBehaviour {
     [SerializeField] Vector3 rotation;
-    [SerializeField] Transform meshObject = null;
+    [SerializeField] Transform meshObject;
     [SerializeField] float rotationSpeed = 0;
     [SerializeField] bool randomize;
     
@@ -19,8 +19,8 @@ public class Rotatator : MonoBehaviour {
 
     // Use this for initialization
     void Start () 
-    
         {
+        meshObject = transform;
 
         if(meshObject == null) 
         

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Game_Controller_Data : MonoBehaviour
@@ -19,6 +20,11 @@ public class Game_Controller_Data : MonoBehaviour
     [Range(0.1f, 1f)]
     public float Sun_mov_speed;
     public bool is_slowmo_on = false;
+    [Range(0f, 1f)]
+    public float Slow_mo_scale = 0.3f;
+    public GameObject Explosion_effect;
+    public GameObject Meteor_explosion_effect;
+    public bool is_paused = false;
 
     void Start()
     {

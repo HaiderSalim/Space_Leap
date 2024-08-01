@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    private enum Enemy_type {Fire, Slime};
+    private enum Enemy_type {Fire, Slime, Spikes};
     [SerializeField]
     private Enemy_type enemy_type = Enemy_type.Fire;
     [SerializeField, Range(0f, 0.5f)]
@@ -13,12 +13,14 @@ public class Enemies : MonoBehaviour
     private Game_controller GC;
     private AudioSource Fire_audio;
     private AudioSource Slime_audio;
+    private AudioSource Spikes_audio;
 
     void Start()
     {
         GC =  GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_controller>();
         Fire_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(2);
-        Slime_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(3);
+        Spikes_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(3);
+        Slime_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(4);
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,10 +32,15 @@ public class Enemies : MonoBehaviour
                 Fire_audio.Play();
                 GC.decrease_Health();
             }
-            else
+            else if (enemy_type == Enemy_type.Slime)
             {
                 Slime_audio.Play();
                 GC.slow_fuel_regen(Slow_regen_amount, Slow_regen_time);
+            }
+            else
+            {
+                Spikes_audio.Play();
+                GC.decrease_Health();
             }
             gameObject.SetActive(false);
         }

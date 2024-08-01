@@ -24,7 +24,7 @@ public class Black_hole : MonoBehaviour
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_controller>();
-        Black_h_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(5);
+        Black_h_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(6);
         Radius_ring = transform.GetChild(0);
         Radius_ring.localScale = new Vector3(radius + 0.15f, radius + 0.15f, 1);
     }

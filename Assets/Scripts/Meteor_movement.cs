@@ -25,10 +25,10 @@ public class Meteor_movement : MonoBehaviour
     {
         GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_controller>();
         G_cont_data = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_Controller_Data>();
-        Meteor_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(4);
+        Meteor_audio = GameObject.FindGameObjectWithTag("Audio").GetComponentAtIndex<AudioSource>(5);
 
         Og_m_Speed = m_Speed;
-        slowed_m_Speed = m_Speed * 0.5f;
+        slowed_m_Speed = m_Speed * G_cont_data.Slow_mo_scale;
 
         if (DirectionType == Direction.RToL)
         {
@@ -51,7 +51,8 @@ public class Meteor_movement : MonoBehaviour
             m_Speed = Og_m_Speed;
         }
 
-        Movement();
+        if (G_cont_data.is_Game_Started && !G_cont_data.is_paused)
+            Movement();
     }
 
     void Movement()
@@ -61,12 +62,14 @@ public class Meteor_movement : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        Instantiate(G_cont_data.Meteor_explosion_effect, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
         if (collider.gameObject.CompareTag("Player"))
         {
             Meteor_audio.Play();
             GC.decrease_Health();
             //Animation and delay will be added
-            GetComponent<Meteor_spawner>().Back_to_spawn();
         }
+        GetComponent<Meteor_spawner>().Back_to_spawn();
     }
 }

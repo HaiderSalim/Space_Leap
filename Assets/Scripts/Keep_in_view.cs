@@ -4,9 +4,11 @@ public class Keep_in_view : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector2 screenBounds;
+    private Game_controller GC;
 
     void Start()
     {
+        GC = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_controller>();
         mainCamera = Camera.main;
     }
 
@@ -28,10 +30,10 @@ public class Keep_in_view : MonoBehaviour
         // {
         //     viewPos.y = -screenBounds.y;
         // }
-        // else if (viewPos.y < -screenBounds.y)
-        // {
-        //     viewPos.y = screenBounds.y;
-        // }
+        if (viewPos.y < -screenBounds.y)
+        {
+            GC.Die();
+        }
 
         transform.position = viewPos;
     }

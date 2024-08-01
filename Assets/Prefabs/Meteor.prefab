@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn_point: {x: 0, y: 0, z: 0}
+  Spawn_delay: 3
 --- !u!54 &-4848271729797227133
 Rigidbody:
   m_ObjectHideFlags: 0

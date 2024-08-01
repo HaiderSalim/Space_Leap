@@ -28,7 +28,7 @@ public class Attach_to_planet : MonoBehaviour
         if (transform.parent != null)
         {
             transform.rotation = Quaternion.identity;
-            transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
         }
         else
         {
