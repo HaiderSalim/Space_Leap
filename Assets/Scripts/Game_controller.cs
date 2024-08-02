@@ -51,17 +51,18 @@ public class Game_controller : MonoBehaviour
     private bool exposion_once = false;
     private bool pause_once = false;
 
-
     void Start()
     {
-        if (!(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("Current_Level")))
+        if (PlayerPrefs.HasKey("Current_Level") && PlayerPrefs.HasKey("is_Using_level_menu") && !(SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("Current_Level")))
         {
-            if (PlayerPrefs.GetInt("Current_Level") > 0)
+            if (PlayerPrefs.GetString("is_Using_level_menu") == "false")
             {
+                Debug.Log(PlayerPrefs.GetString("is_Using_level_menu"));
                 SceneManager.LoadScene(PlayerPrefs.GetInt("Current_Level"));
             }
             else{
                 PlayerPrefs.SetInt("Current_Level", 0);
+                PlayerPrefs.SetString("is_Using_level_menu", "false");
             }
         }
         
@@ -116,9 +117,16 @@ public class Game_controller : MonoBehaviour
         {
             Time.timeScale = 1f;
             G_cont_data.is_paused = false;
+            pause_once = true;
+        }
+
+        if (!Level_menu.activeInHierarchy)
+        {
+            PlayerPrefs.SetString("is_Using_level_menu", "false");
         }
     }
 
+    //UI
     public void Start_Game()
     {
         G_cont_data.is_Game_Started = true;
@@ -131,6 +139,7 @@ public class Game_controller : MonoBehaviour
     {
         Level_menu.SetActive(true);
         Current_menu_opend = Level_menu;
+        PlayerPrefs.SetString("is_Using_level_menu", "true");
     }
 
     public void Close_current_menu()//A reusable back button function.
@@ -191,7 +200,7 @@ public class Game_controller : MonoBehaviour
         Time.timeScale = 0;
         G_cont_data.is_paused = true;
         Pause_menu.SetActive(true);
-        pause_once = true;
+        pause_once = false;
     }
 
     public void Next_Level()
@@ -204,7 +213,7 @@ public class Game_controller : MonoBehaviour
     }
 
 
-
+    //Game systems
     public void ManageCheckPoints()
     {
         if (CPs.Count > 0)
@@ -288,5 +297,10 @@ public class Game_controller : MonoBehaviour
             exposion_once = true;
         }
         player.SetActive(false);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("is_Using_level_menu", "false");
     }
 }

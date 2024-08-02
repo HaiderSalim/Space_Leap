@@ -25,9 +25,16 @@ public class Game_Controller_Data : MonoBehaviour
     public GameObject Explosion_effect;
     public GameObject Meteor_explosion_effect;
     public bool is_paused = false;
+    public List<Rotatator> Planets_rotation_comp;
 
     void Start()
     {
         player_Health = GetComponent<Game_controller>().Health_Bar.Count;
+        
+        var planets = GameObject.FindGameObjectsWithTag("Planet");
+        for (int i = 0; i < planets.Length && planets.Length > 0; i++)
+        {
+            Planets_rotation_comp.Add(planets[i].GetComponent<Rotatator>());
+        }
     }
 }

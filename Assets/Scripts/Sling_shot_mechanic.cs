@@ -20,6 +20,7 @@ public class Sling_shot_mechanic : MonoBehaviour
     private Vector3 startpos; // Vector3 to store the start position
     private float touch_dis;
     private Attach_to_planet attach_To_Planet;
+    private bool Apply_slowmo_once = false;
 
     void Start()
     {
@@ -55,7 +56,16 @@ public class Sling_shot_mechanic : MonoBehaviour
                 startpos = Camera.main.ScreenToWorldPoint(touch.position); // Set start position to the hit point
                 is_Sling_able = true;
                 Player_outline.enabled = true;
-                Time.timeScale = G_control_d.Slow_mo_scale;
+
+                if (!Apply_slowmo_once)
+                {
+                    foreach (var obj in G_control_d.Planets_rotation_comp)
+                    {
+                        obj.rotationSpeed *= G_control_d.Slow_mo_scale;
+                    }
+                    Apply_slowmo_once = true;
+                }
+
                 G_control_d.is_slowmo_on = true;
             }
             if (touch.phase == TouchPhase.Moved && is_Sling_able)
@@ -91,6 +101,11 @@ public class Sling_shot_mechanic : MonoBehaviour
                 Total_force.y = Mathf.Clamp(Total_force.y, 0, 4f);//locking the force to a limit and also so preventing the player to sling back (There is only one way to go UP!!)
                 Total_force.x = Mathf.Clamp(Total_force.x, -4f, 4f);
 
+                foreach (var obj in G_control_d.Planets_rotation_comp)
+                {
+                    obj.rotationSpeed = obj.OG_rotationSpeed;
+                }
+
                 if (Total_force.y > 0)//makes sure that force only applyes when their is an effect to sling so, accindental swips don't registor.
                     RB.AddForce(Total_force, ForceMode.Impulse);
                 
@@ -101,6 +116,7 @@ public class Sling_shot_mechanic : MonoBehaviour
                 attach_To_Planet.is_Attached = false;
                 Time.timeScale = 1f;
                 G_control_d.is_slowmo_on = false;
+                Apply_slowmo_once = false;
             }
         }
         else{
