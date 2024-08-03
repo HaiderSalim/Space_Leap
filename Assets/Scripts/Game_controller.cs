@@ -209,7 +209,7 @@ public class Game_controller : MonoBehaviour
         {
             PlayerPrefs.SetInt("Current_Level", PlayerPrefs.GetInt("Current_Level") + 1);
         }
-        SceneManager.LoadScene(PlayerPrefs.GetInt("Current_Level"));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 
