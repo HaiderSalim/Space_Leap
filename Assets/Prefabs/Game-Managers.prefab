@@ -661,9 +661,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot_Power: 5
+  shot_power_mul: 0.03
   RB: {fileID: 0}
   line_Renderer_F: {fileID: 0}
-  line_Renderer_B: {fileID: 0}
   G_control_d: {fileID: 7707072106316746464}
   Player_outline: {fileID: 0}
   is_Sling_able: 0
@@ -701,14 +701,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   player_Health: 3
-  fuel_Useage_Speed: 0.5
-  fuel_Regen_Speed: 0.25
+  fuel_Useage_Speed: 1
+  fuel_Regen_Speed: 0.1
   Sun_mov_speed: 0.3
   is_slowmo_on: 0
   Slow_mo_scale: 0.3
   Explosion_effect: {fileID: 2504214343621411470, guid: 9f56d1d568af9f14eb213d9840f0254f, type: 3}
   Meteor_explosion_effect: {fileID: 2504214343621411470, guid: c092636048991244988fddfee51bf0ea, type: 3}
   is_paused: 0
+  Planets_rotation_comp: []
 --- !u!114 &7318509871591083276
 MonoBehaviour:
   m_ObjectHideFlags: 0

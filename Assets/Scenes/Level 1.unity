@@ -1719,6 +1719,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1573944593}
     - target: {fileID: 7707072106316746464, guid: 26f44a0f604c3b24db587c16027bb727, type: 3}
+      propertyPath: fuel_Useage_Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707072106316746464, guid: 26f44a0f604c3b24db587c16027bb727, type: 3}
       propertyPath: CheckPoints.Array.size
       value: 3
       objectReference: {fileID: 0}

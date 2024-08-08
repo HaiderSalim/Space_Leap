@@ -188,6 +188,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: planet 9
       objectReference: {fileID: 0}
+    - target: {fileID: 9153712989279130727, guid: 98619ce6379080543beb91c8bc19b597, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153712989279130727, guid: 98619ce6379080543beb91c8bc19b597, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -206,6 +214,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699426018}
     m_Modifications:
+    - target: {fileID: -6509881423921212509, guid: 0f2bf1aaa5839a84b86c6f75947261bc, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6509881423921212509, guid: 0f2bf1aaa5839a84b86c6f75947261bc, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2239152692108068243, guid: 0f2bf1aaa5839a84b86c6f75947261bc, type: 3}
       propertyPath: m_Center.y
       value: 0
@@ -333,6 +349,14 @@ PrefabInstance:
     - target: {fileID: 5312194597306122845, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
       propertyPath: m_Name
       value: planet 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780315337868398127, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780315337868398127, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
+      propertyPath: rotation.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -864,6 +888,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 454243511316269622, guid: 38837b84efa50264bb8567a329e445a6, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454243511316269622, guid: 38837b84efa50264bb8567a329e445a6, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4824310108854819047, guid: 38837b84efa50264bb8567a329e445a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6274595
@@ -1339,6 +1371,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699426018}
     m_Modifications:
+    - target: {fileID: -2293662126164389719, guid: e37b584b7a322f0479e7218c734ca306, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2293662126164389719, guid: e37b584b7a322f0479e7218c734ca306, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3152946572496622552, guid: e37b584b7a322f0479e7218c734ca306, type: 3}
       propertyPath: m_Center.y
       value: 0
@@ -1428,6 +1468,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699426018}
     m_Modifications:
+    - target: {fileID: -7268851768501700540, guid: 6d65b8499214de243be6fdff7ef662d1, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7268851768501700540, guid: 6d65b8499214de243be6fdff7ef662d1, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6805923582598999936, guid: 6d65b8499214de243be6fdff7ef662d1, type: 3}
       propertyPath: m_Center.y
       value: 0
@@ -1974,6 +2022,14 @@ PrefabInstance:
     - target: {fileID: 5312194597306122845, guid: aadf8835d5a69d6498afac214c22a661, type: 3}
       propertyPath: m_Name
       value: planet 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284053032723438912, guid: aadf8835d5a69d6498afac214c22a661, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284053032723438912, guid: aadf8835d5a69d6498afac214c22a661, type: 3}
+      propertyPath: rotation.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

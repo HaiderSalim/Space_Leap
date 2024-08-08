@@ -405,6 +405,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699426018}
     m_Modifications:
+    - target: {fileID: -2154690673744950262, guid: 2697be32051c7944290e92f4c08835af, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2154690673744950262, guid: 2697be32051c7944290e92f4c08835af, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2154690673744950262, guid: 2697be32051c7944290e92f4c08835af, type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 751342041987552231, guid: 2697be32051c7944290e92f4c08835af, type: 3}
       propertyPath: m_Center.y
       value: 0
@@ -810,6 +822,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: planet 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5897872154775804350, guid: 10bdedbe823f65243a0902839dec7b2e, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897872154775804350, guid: 10bdedbe823f65243a0902839dec7b2e, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897872154775804350, guid: 10bdedbe823f65243a0902839dec7b2e, type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -884,6 +908,18 @@ PrefabInstance:
     - target: {fileID: 8674800724819281900, guid: ae690f0f56c82194d8ca2b5c3e6f6589, type: 3}
       propertyPath: m_Center.z
       value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909306623148645098, guid: ae690f0f56c82194d8ca2b5c3e6f6589, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909306623148645098, guid: ae690f0f56c82194d8ca2b5c3e6f6589, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909306623148645098, guid: ae690f0f56c82194d8ca2b5c3e6f6589, type: 3}
+      propertyPath: rotationSpeed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1045,8 +1081,16 @@ PrefabInstance:
       value: planet 17
       objectReference: {fileID: 0}
     - target: {fileID: 5780315337868398127, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780315337868398127, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780315337868398127, guid: 9a37abfce26046c4a87c50d269f81a3d, type: 3}
       propertyPath: rotationSpeed
-      value: -50
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1331,6 +1375,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699426018}
     m_Modifications:
+    - target: {fileID: -7088990576729121516, guid: ed197bbb536a8f6459ec08e535756bf9, type: 3}
+      propertyPath: meshObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -7088990576729121516, guid: ed197bbb536a8f6459ec08e535756bf9, type: 3}
+      propertyPath: rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7088990576729121516, guid: ed197bbb536a8f6459ec08e535756bf9, type: 3}
+      propertyPath: rotation.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7088990576729121516, guid: ed197bbb536a8f6459ec08e535756bf9, type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4824310108854819047, guid: ed197bbb536a8f6459ec08e535756bf9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.88
@@ -2056,15 +2116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8848767166992540277, guid: 6c150dcb64e71e848a9ddf1a23368a4f, type: 3}
       propertyPath: radius
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8848767166992540277, guid: 6c150dcb64e71e848a9ddf1a23368a4f, type: 3}
       propertyPath: Blackhole_mass
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8848767166992540277, guid: 6c150dcb64e71e848a9ddf1a23368a4f, type: 3}
       propertyPath: Gravitation_const
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

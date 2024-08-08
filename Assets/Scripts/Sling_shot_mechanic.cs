@@ -5,12 +5,14 @@ public class Sling_shot_mechanic : MonoBehaviour
     [Header("Sling Parameters")]
     [SerializeField]
     private float shot_Power = 5;
+    [SerializeField, Range(0f, 1f)]
+    private float shot_power_mul = 0.1f;
     [SerializeField]
     private Rigidbody RB;
     [SerializeField]
     private LineRenderer line_Renderer_F;
-    [SerializeField]
-    private LineRenderer line_Renderer_B;
+    //[SerializeField]
+    //private LineRenderer line_Renderer_B;
     [SerializeField]
     private Game_Controller_Data G_control_d;
     [SerializeField]
@@ -75,16 +77,16 @@ public class Sling_shot_mechanic : MonoBehaviour
                 Vector3 shot_angle = startpos - endpos;
                 shot_angle.z = 0;
 
-                var Total_force_F =  0.1f * touch_dis * shot_Power * shot_angle;
-                Total_force_F.y = Mathf.Clamp(Total_force_F.y, 0, 4);
-                Total_force_F.x = Mathf.Clamp(Total_force_F.x, -4f, 4f);
-                var Total_force_B =  0.1f * touch_dis * shot_Power * -shot_angle;
-                Total_force_B.y = Mathf.Clamp(Total_force_B.y, -4f, 0f);
-                Total_force_B.x = Mathf.Clamp(Total_force_B.x, -4f, 4f);
+                var Total_force_F =  (shot_power_mul * 2f) * touch_dis * 5 * shot_angle;
+                Total_force_F.y = Mathf.Clamp(Total_force_F.y, 0, 6);
+                Total_force_F.x = Mathf.Clamp(Total_force_F.x, -6f, 6f);
+                // var Total_force_B =  0.1f * touch_dis * 5 * -shot_angle;
+                // Total_force_B.y = Mathf.Clamp(Total_force_B.y, -4f, 0f);
+                // Total_force_B.x = Mathf.Clamp(Total_force_B.x, -4f, 4f);
                 //Debug.Log(Total_force_F + " " + Total_force_B);
 
                 line_Renderer_F.SetPosition(1, Total_force_F); // End point of the line
-                line_Renderer_B.SetPosition(1, Total_force_B);
+                //line_Renderer_B.SetPosition(1, Total_force_B);
             }
             if (touch.phase == TouchPhase.Ended && is_Sling_able)
             {
@@ -97,7 +99,7 @@ public class Sling_shot_mechanic : MonoBehaviour
                 RB.velocity = Vector3.zero;
                 attach_To_Planet.unattachable = false;
 
-                var Total_force = 0.1f * shot_Power * touch_dis * shot_angle;
+                var Total_force = shot_power_mul * shot_Power * touch_dis * shot_angle;
                 Total_force.y = Mathf.Clamp(Total_force.y, 0, 4f);//locking the force to a limit and also so preventing the player to sling back (There is only one way to go UP!!)
                 Total_force.x = Mathf.Clamp(Total_force.x, -4f, 4f);
 
@@ -112,7 +114,7 @@ public class Sling_shot_mechanic : MonoBehaviour
                 RB.gameObject.transform.SetParent(null);
                 is_Sling_able = false;
                 line_Renderer_F.SetPosition(1, Vector3.zero); // Reset the line renderer
-                line_Renderer_B.SetPosition(1, Vector3.zero);
+                //line_Renderer_B.SetPosition(1, Vector3.zero);
                 attach_To_Planet.is_Attached = false;
                 Time.timeScale = 1f;
                 G_control_d.is_slowmo_on = false;
@@ -123,7 +125,7 @@ public class Sling_shot_mechanic : MonoBehaviour
             Player_outline.enabled = false;
             is_Sling_able = false;
             line_Renderer_F.SetPosition(1, Vector3.zero); // Reset the line renderer
-            line_Renderer_B.SetPosition(1, Vector3.zero);
+            //line_Renderer_B.SetPosition(1, Vector3.zero);
             Time.timeScale = 1f;
             G_control_d.is_slowmo_on = false;
         }

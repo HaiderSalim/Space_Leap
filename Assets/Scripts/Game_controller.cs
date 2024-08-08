@@ -81,8 +81,22 @@ public class Game_controller : MonoBehaviour
     void Update()
     {
         manage_Fuel();
-        if (G_cont_data.is_Game_Started)
+        if (!G_cont_data.is_Game_Started)
+        {    
+            foreach (var obj in G_cont_data.Planets_rotation_comp)
+            {
+                obj.rotationSpeed = 0;
+            }
+        }
+        else if(!G_cont_data.is_slowmo_on){
+            foreach (var obj in G_cont_data.Planets_rotation_comp)
+            {
+                obj.rotationSpeed = obj.OG_rotationSpeed;
+            }
+        }
+        if (G_cont_data.is_Game_Started){
             move_Sun();
+        }
 
         if (fuel_slow_delay <= 0 && fuel_is_Slowed)
         {
