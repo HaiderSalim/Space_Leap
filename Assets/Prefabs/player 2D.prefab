@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 1267784776302710190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -2.01, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -296,6 +296,8 @@ MonoBehaviour:
   unattachable_Delay: 0.05
   unattachable: 0
   is_Attached: 0
+  idel_Anime_speed: 0.005
+  Anime_direction_change_time: 0.6
 --- !u!114 &7579809800490655701
 MonoBehaviour:
   m_ObjectHideFlags: 0

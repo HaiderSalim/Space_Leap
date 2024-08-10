@@ -18,6 +18,7 @@ public class Move_cam : MonoBehaviour
             if (is_Win_trigger)
             {
                 GC.GameWin();
+                collider.gameObject.SetActive(false);
             }
             else
             {

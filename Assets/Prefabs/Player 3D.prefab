@@ -6297,10 +6297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c0b08a9ba7ec540b8e5f1ab7edf4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockettrail: {fileID: 0}
   loc_adject_speed: 0.01
   unattachable_Delay: 0.05
   unattachable: 0
   is_Attached: 0
+  idel_Anime_speed: 0.001
+  Anime_direction_change_time: 0.5
 --- !u!114 &4478077297393273110
 MonoBehaviour:
   m_ObjectHideFlags: 0
